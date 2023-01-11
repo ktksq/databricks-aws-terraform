@@ -25,5 +25,9 @@ resource "random_string" "naming" {
 }
 
 locals {
-  prefix = "e2-demo-ktksk-${random_string.naming.result}"
+  prefix = "e2-demo-ktksk"
 }
+
+// locals {
+//   prefix = "e2-demo-ktksk-${random_string.naming.result}"
+// }
