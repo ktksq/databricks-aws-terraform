@@ -7,15 +7,12 @@ variable "aws_account_id" {}
 variable "access_key" {}
 variable "secret_key" {}
 
-
-variable "tags" {}
-
+variable "tags" {
+  default = {}
+}
 
 variable "region" {}
-
-variable "owner" {
-  default = "saki.kitaoka@databricks.com"
-}
+variable "owner" {}
 
 variable "databricks_workspace_ids" {
   description = <<EOT
@@ -49,6 +46,8 @@ variable "unity_admin_group" {
   type        = string
 }
 
+variable "metastore_name" {}
+
 
 // See https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string
 resource "random_string" "naming" {
@@ -59,6 +58,7 @@ resource "random_string" "naming" {
 
 locals {
   prefix = "e2-demo-ktksk"
+  tags = {}
 }
 
 // locals {

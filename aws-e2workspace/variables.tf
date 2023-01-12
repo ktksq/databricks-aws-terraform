@@ -9,9 +9,7 @@ variable "tags" {
   default = {}
 }
 
-variable "owner" {
-  default = "saki.kitaoka@databricks.com"
-}
+variable "owner" {}
 
 variable "cidr_block" {
   default = "10.4.0.0/16"

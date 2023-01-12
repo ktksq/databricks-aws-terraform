@@ -20,6 +20,7 @@ provider "aws" {
     Project   = "Create Databricks with Terraform"
     ManagedBy = "Terraform"
     Owner     = var.owner
+    Name      = ""
     }
   }
 }
