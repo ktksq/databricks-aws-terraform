@@ -15,6 +15,14 @@ provider "aws" {
   region = var.region
   access_key = var.access_key
   secret_key = var.secret_key
+  default_tags {
+   tags = {
+    Project   = "Create Databricks with Terraform"
+    ManagedBy = "Terraform"
+    Owner     = var.owner
+    Name      = ""
+    }
+  }
 }
 
 // Initialize provider in "MWS" mode to provision the new workspace.
