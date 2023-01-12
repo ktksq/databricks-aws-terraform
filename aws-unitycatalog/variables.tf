@@ -47,6 +47,7 @@ variable "unity_admin_group" {
 }
 
 variable "metastore_name" {}
+variable "default_catalog_name" {}
 
 
 // See https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string
