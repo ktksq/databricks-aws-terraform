@@ -9,13 +9,13 @@ variable "tags" {
   default = {}
 }
 
+variable "owner" {}
+
 variable "cidr_block" {
   default = "10.4.0.0/16"
 }
 
-variable "region" {
-  default = "us-east-1"
-}
+variable "region" {}
 
 // See https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string
 resource "random_string" "naming" {
@@ -24,10 +24,10 @@ resource "random_string" "naming" {
   length  = 6
 }
 
-locals {
-  prefix = "e2-demo-ktksk"
-}
-
 // locals {
-//   prefix = "e2-demo-ktksk-${random_string.naming.result}"
+//   prefix = "e2-demo-ktksk"
 // }
+
+locals {
+  prefix = "e2-demo-ktksk-${random_string.naming.result}"
+}

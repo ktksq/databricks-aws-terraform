@@ -7,14 +7,12 @@ variable "aws_account_id" {}
 variable "access_key" {}
 variable "secret_key" {}
 
-
 variable "tags" {
   default = {}
 }
 
-variable "region" {
-  default = "us-west-1"
-}
+variable "region" {}
+variable "owner" {}
 
 variable "databricks_workspace_ids" {
   description = <<EOT
@@ -47,6 +45,8 @@ variable "unity_admin_group" {
   description = "Name of the admin group. This group will be set as the owner of the Unity Catalog metastore"
   type        = string
 }
+
+variable "metastore_name" {}
 
 
 // See https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string

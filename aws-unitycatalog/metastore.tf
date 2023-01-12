@@ -1,3 +1,6 @@
+// Configure AWS objects
+// https://registry.terraform.io/providers/databricks/databricks/latest/docs/guides/unity-catalog#configure-aws-objects
+
 resource "aws_s3_bucket" "metastore" {
   bucket = "${local.prefix}-metastore"
   acl    = "private"
@@ -114,11 +117,12 @@ resource "aws_iam_role" "metastore_data_access" {
 }
 
 
-
+// Create a Unity Catalog metastore and link it to workspaces
+// https://registry.terraform.io/providers/databricks/databricks/latest/docs/guides/unity-catalog#create-a-unity-catalog-metastore-and-link-it-to-workspaces
 
 resource "databricks_metastore" "this" {
   provider      = databricks.workspace
-  name          = "primary"
+  name          = var.metastore_name
   storage_root  = "s3://${aws_s3_bucket.metastore.id}/metastore"
   owner         = var.unity_admin_group
   force_destroy = true
@@ -139,5 +143,5 @@ resource "databricks_metastore_assignment" "default_metastore" {
   for_each             = toset(var.databricks_workspace_ids)
   workspace_id         = each.key
   metastore_id         = databricks_metastore.this.id
-  default_catalog_name = "hive_metastore"
+  default_catalog_name = var.default_catalog_name
 }
