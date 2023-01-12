@@ -8,12 +8,13 @@ variable "access_key" {}
 variable "secret_key" {}
 
 
-variable "tags" {
-  default = {}
-}
+variable "tags" {}
 
-variable "region" {
-  default = "us-west-1"
+
+variable "region" {}
+
+variable "owner" {
+  default = "saki.kitaoka@databricks.com"
 }
 
 variable "databricks_workspace_ids" {
@@ -58,7 +59,6 @@ resource "random_string" "naming" {
 
 locals {
   prefix = "e2-demo-ktksk"
-  tags = {}
 }
 
 // locals {
