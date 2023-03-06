@@ -49,6 +49,10 @@ variable "unity_admin_group" {
 variable "metastore_name" {}
 variable "default_catalog_name" {}
 
+// for external storage
+variable "external_storage_label" {}
+variable "external_storage_location_label" {}
+
 
 // See https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string
 resource "random_string" "naming" {
