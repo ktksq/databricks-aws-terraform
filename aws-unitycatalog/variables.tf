@@ -61,12 +61,12 @@ resource "random_string" "naming" {
   length  = 6
 }
 
-// locals {
-//   prefix = "e2-demo-ktksk"
-//   tags = {}
-// }
-
 locals {
-  prefix = "e2-demo-ktksk-${random_string.naming.result}"
+  prefix = "e2-demo-ktksk"
   tags = {}
 }
+
+// locals {
+//   prefix = "e2-demo-ktksk-${random_string.naming.result}"
+//   tags = {}
+// }
