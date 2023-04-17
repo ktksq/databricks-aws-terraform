@@ -59,14 +59,17 @@ resource "databricks_storage_credential" "external" {
   aws_iam_role {
     role_arn = aws_iam_role.external_data_access.arn
   }
-  depends_on = [time_sleep.wait]
+  // depends_on = [time_sleep.wait]
+  depends_on = [databricks_metastore_assignment.default_metastore]
 }
+
 
 resource "databricks_external_location" "this" {
   provider = databricks.workspace
   name            = "${var.external_storage_label}"
   url             = "s3://${local.prefix}-${var.external_storage_label}/${var.external_storage_location_label}"
   credential_name = databricks_storage_credential.external.id
+  depends_on = [databricks_metastore_assignment.default_metastore]
 }
 
 // https://kb.databricks.com/en_US/terraform/failed-credential-validation-checks-error-with-terraform
